@@ -1,0 +1,15 @@
+CREATE TABLE `Tb_cliente` (
+	`Id_Cliente` INT(1000) NOT NULL AUTO_INCREMENT,
+	`Id_Identificacion` INT(11) NOT NULL,
+	`Nombre` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+	`email` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+	`Telefono` VARCHAR(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+	`Estado` INT(1),
+	PRIMARY KEY (`Id_Cliente`)
+);
+
+
+
+INSERT INTO db_proyecto.tb_cliente
+(Id_Identificacion, Nombre, email, Telefono, Estado)
+VALUES(0, NULL, NULL, NULL, NULL);
