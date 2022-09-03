@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.angular.demo.DTO.ClienteDTO;
+import com.proyecto.angular.demo.Service.Clientes.ClienteService;
 
-import com.proyecto.angular.demo.Service.ClienteService;
+import lombok.extern.slf4j.Slf4j;
 
 
-
+@Slf4j
 @RestController
 @RequestMapping("/Cliente")
 public class ClienteController {
@@ -28,12 +29,13 @@ public class ClienteController {
     private ClienteService clienteService;
 
 
-    @GetMapping("/{id}")
-	public ResponseEntity<?> findById(@PathVariable Integer id) {
 
-		ClienteDTO clienteDTO =clienteService.findById(id);
-        
-        return ResponseEntity.ok(clienteDTO);
+ 
+    @GetMapping("/{id}")
+	public ClienteDTO findById(@PathVariable Integer id) {
+
+		        
+        return clienteService.findById(id);
 	}
 /*
     @GetMapping

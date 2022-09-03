@@ -18,13 +18,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @Entity (name = "Producto")
-@Table(name = "tb_prodcuto")
+@Table(name = "tb_producto")
 public class ProductoEntity {
 
     @Id
     @Column (name = "Id_producto")   
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Integer Id;
     @Column (name = "Nombre")
     private String Nombre;
     @Column (name = "Precio")

@@ -1,4 +1,4 @@
-package com.proyecto.angular.demo.Service;
+package com.proyecto.angular.demo.Service.Clientes;
 
 import java.util.List;
 import java.util.Optional;
