@@ -1,5 +1,4 @@
-package com.proyecto.angular.demo.Entity;
-
+package com.proyecto.angular.demo.Entity.General;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,30 +13,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Entity (name = "Cliente")
-@Table(name = "tb_cliente")
-
-
-public class ClienteEntity {
+@Entity (name = "Producto")
+@Table(name = "tb_prodcuto")
+public class ProductoEntity {
 
     @Id
-    @Column (name = "Id_Cliente")   
+    @Column (name = "Id_producto")   
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id ; 
-    @Column (name = "Id_Identificacion")
-    private String  Id_Identificacion;
+    private Long Id;
     @Column (name = "Nombre")
     private String Nombre;
-    @Column (name = "email")
-    private String Email ;
-    @Column (name ="Telefono")
-    private String Telefono;
+    @Column (name = "Precio")
+    private Double Precio ; 
+    @Column (name = "Telefono")
+    private Double Telefono;
     @Column (name = "Estado")
-    private Integer Estado;
+    private String Estado;
+  
     
 }

@@ -4,7 +4,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import com.proyecto.angular.demo.DTO.ClienteDTO;
-import com.proyecto.angular.demo.Entity.ClienteEntity;
+import com.proyecto.angular.demo.Entity.General.ClienteEntity;
 
 @Component
 public class ClienteMapper {
