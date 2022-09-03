@@ -2,23 +2,20 @@ package com.proyecto.angular.demo.Service;
 
 import java.util.List;
 
-import com.proyecto.angular.demo.Entity.ClienteEntity;
+import com.proyecto.angular.demo.DTO.ClienteDTO;
+
 
 public interface ClienteService  {
  
-    ClienteEntity findById(Integer id);
+    ClienteDTO findById(Integer id);
 
-    List<ClienteEntity> getClientes();
+    List<ClienteDTO> getClientes();
 
-    ClienteEntity crearCliente(ClienteEntity clienteEntity);
+    ClienteDTO crearCliente(ClienteDTO clienteDTO);
 
     void borrarCliente(Integer id);
 
-    List<ClienteEntity> findLikeNombre(String Nombre);
+  
 
-    /*
-    
-    ClienteEntity editarById(ClienteEntity clienteEntity);
-    
-    */
+  
 }

@@ -3,17 +3,18 @@ package com.proyecto.angular.demo.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyecto.angular.demo.Entity.ClienteEntity;
+import com.proyecto.angular.demo.DTO.ClienteDTO;
+
 import com.proyecto.angular.demo.Service.ClienteService;
 
 
@@ -28,21 +29,27 @@ public class ClienteController {
 
 
     @GetMapping("/{id}")
-	public ClienteEntity findById(@PathVariable Integer id) {
-		return clienteService.findById(id);
-		
+	public ResponseEntity<?> findById(@PathVariable Integer id) {
+
+		ClienteDTO clienteDTO =clienteService.findById(id);
+        
+        return ResponseEntity.ok(clienteDTO);
 	}
-
+/*
     @GetMapping
-    public List<ClienteEntity> getClientes(){
+    public List<ClienteDTO> getClientes(){
 
-        return clienteService.getClientes();
+        List<ClienteDTO> clienteDTO = clienteService.getClientes();
+        ClienteDTO.builder().Nombre(Nombre).build()
+        return ResponseEntity.ok(clienteDTO);
 
     } 
 
+     */
+
     @PostMapping
-    public ClienteEntity Crear(@RequestBody ClienteEntity clienteEntity ){
-        return clienteService.crearCliente(clienteEntity);
+    public ClienteDTO Crear(@RequestBody ClienteDTO clienteDTO ){
+        return clienteService.crearCliente(clienteDTO);
     }
 
     @DeleteMapping("/{id}")
@@ -50,10 +57,6 @@ public class ClienteController {
         clienteService.borrarCliente(id);
     }
 
-    @GetMapping("/buscar-nombre")
-    public List<ClienteEntity> findLikeNombre(@RequestParam(value = "nombre",defaultValue = "" ) String Nombre){
-        return clienteService.findLikeNombre(Nombre);
-    }
 
     /*
     @PutMapping("/{id}")
