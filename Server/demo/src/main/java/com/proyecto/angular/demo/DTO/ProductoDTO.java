@@ -1,7 +1,4 @@
 package com.proyecto.angular.demo.DTO;
-
-import javax.management.loading.PrivateClassLoader;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
