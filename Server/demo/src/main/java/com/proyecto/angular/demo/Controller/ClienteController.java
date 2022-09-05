@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyecto.angular.demo.DTO.ClienteDTO;
 import com.proyecto.angular.demo.Service.Clientes.ClienteService;
 
-import lombok.extern.slf4j.Slf4j;
 
 
-@Slf4j
+
 @RestController
 @RequestMapping("/Cliente")
 public class ClienteController {
@@ -37,17 +36,6 @@ public class ClienteController {
 		        
         return clienteService.findById(id);
 	}
-/*
-    @GetMapping
-    public List<ClienteDTO> getClientes(){
-
-        List<ClienteDTO> clienteDTO = clienteService.getClientes();
-        ClienteDTO.builder().Nombre(Nombre).build()
-        return ResponseEntity.ok(clienteDTO);
-
-    } 
-
-     */
 
     @PostMapping
     public ClienteDTO Crear(@RequestBody ClienteDTO clienteDTO ){
@@ -59,6 +47,11 @@ public class ClienteController {
         clienteService.borrarCliente(id);
     }
 
+
+    @GetMapping("/buscar-nombre")
+    public List<ClienteDTO> findLikeNombre(@RequestParam(value = "nombre",defaultValue = "" ) String Nombre){
+	return clienteService.findLikeNombre(Nombre);
+    }
 
     /*
     @PutMapping("/{id}")

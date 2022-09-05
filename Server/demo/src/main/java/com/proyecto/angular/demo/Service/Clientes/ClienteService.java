@@ -15,7 +15,7 @@ public interface ClienteService  {
 
     void borrarCliente(Integer id);
 
-  
+    List<ClienteDTO> findLikeNombre(String Nombre);
 
   
 }

@@ -27,37 +27,17 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteMapper.toDTO(clienteEntity);
 	}
 	
-    /*
-    @Override
-    public List<ClienteDTO> getClientes(){
-       List<ClienteEntity> ListaClienteEntity = clienteRepository.findAll();
-        return ListaClienteEntity.stream().map(clienteMapper.toDTO(ListaClienteEntity)).toList();
-
-    } */
- 
     @Override
     public ClienteDTO crearCliente(ClienteDTO clienteDTO){
        return clienteMapper.toDTO(clienteRepository.save(clienteMapper.toEntity(clienteDTO)));
     }
 
     @Override
-    public void borrarCliente(Integer id ){
-        clienteRepository.deleteById(id);
-    }
-
-    @Override
-    public List<ClienteDTO> getClientes() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-/* 
-    @Override
     public List<ClienteDTO> findLikeNombre(ClienteDTO clienteDTO){
         List<ClienteEntity> listaClienteEntity = clienteRepository.findLikeNombre("%"+clienteDTO.getNombre()+"%");
         return listaClienteEntity.stream().map(c-> clienteMapper.toDTO(c)).toList();
     }
-*/
+
 
     
 
