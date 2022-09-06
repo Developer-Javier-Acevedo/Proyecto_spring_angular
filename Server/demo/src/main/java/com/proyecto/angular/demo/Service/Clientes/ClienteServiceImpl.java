@@ -15,6 +15,7 @@ import com.proyecto.angular.demo.Repositoryes.ClienteRepository;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
+    // esto es nuevo 
     @Autowired
     private ClienteRepository clienteRepository;
 
