@@ -11,7 +11,6 @@ import com.proyecto.angular.demo.Entity.General.ClienteEntity;
 import com.proyecto.angular.demo.Mappers.ClienteMapper;
 import com.proyecto.angular.demo.Repositoryes.ClienteRepository;
 import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
-import static java.util.Objects.isNull;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {

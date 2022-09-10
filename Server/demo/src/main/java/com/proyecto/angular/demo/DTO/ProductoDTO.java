@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 public class ProductoDTO {
     private Integer Id;
+    private String Serial;
     private String Nombre;
     private Double Precio ; 
     private Double Telefono;

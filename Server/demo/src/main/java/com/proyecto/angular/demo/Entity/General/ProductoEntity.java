@@ -25,6 +25,10 @@ public class ProductoEntity {
     @Column (name = "Id_producto")   
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
+
+    @Column (name = "Serial")
+    private String Serial;
+
     @Column (name = "Nombre")
     private String Nombre;
     @Column (name = "Precio")
