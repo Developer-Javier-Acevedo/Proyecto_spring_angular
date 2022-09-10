@@ -5,6 +5,9 @@ package com.proyecto.angular.demo.Controller.General;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,8 @@ import com.proyecto.angular.demo.Service.Clientes.General.ClienteService;
 import static java.util.Objects.isNull;
 
 import java.util.List;
+
+import javax.naming.Binding;
 
 
 
@@ -56,8 +61,13 @@ public class ClienteController  extends GenericController{
 	}
 
     @PostMapping
-    public ResponseEntity<?> Crear(@RequestBody ClienteDTO cliente ){
+    public ResponseEntity<?> Crear(@RequestBody @Validated ClienteDTO cliente, BindingResult result ){
         try {
+
+            if(result.hasErrors()){
+                return ResponseEntity.badRequest().body(result.getAllErrors());
+            }
+
             ClienteDTO clienteDTO = clienteService.crearCliente(cliente);
 
             if (!isNull(clienteDTO)) {
@@ -95,6 +105,27 @@ public class ClienteController  extends GenericController{
             return ResponseEntity.internalServerError().build();
         }
 	
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> BorrarCliente(@PathVariable Integer id){
+        try {
+              clienteService.BorrarCliente(id);
+            return  ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    @GetMapping("/ClienteID")
+    public ResponseEntity<?> encontrarIdentificacion(@RequestParam(value = "identificacion",defaultValue = "" ) String Identificacion){
+
+        try {
+            List<ClienteDTO> cliente = clienteService.findbyIdentificacion(ClienteDTO.builder().Id_Identificacion(Identificacion).build());
+           
+            return ResponseEntity.ok(cliente);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
 }

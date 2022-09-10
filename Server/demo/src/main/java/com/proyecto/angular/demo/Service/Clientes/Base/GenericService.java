@@ -16,5 +16,7 @@ public interface GenericService<T>  {
    
     List<T> traerTodos()throws ServiceException;
 
-  
+    void BorrarCliente(Integer id ) throws ServiceException;
+
+    List<T> findbyIdentificacion(T t) throws ServiceException;
 }

@@ -16,5 +16,7 @@ public interface ClienteRepository extends JpaRepository <ClienteEntity, Integer
     @Query(value = "SELECT * FROM tb_cliente where Nombre LIKE :Nombre", nativeQuery = true) //SQL
     List<ClienteEntity> findLikeNombre(@Param("Nombre") String Nombre);
 
-    
+    @Query(value = "SELECT * FROM tb_cliente where Id_Identificacion =:IdentificacionCliente", nativeQuery = true) //SQL
+    List<ClienteEntity> findbyIdentificacion(@Param("IdentificacionCliente") String IdentificacionCliente);
+
 }

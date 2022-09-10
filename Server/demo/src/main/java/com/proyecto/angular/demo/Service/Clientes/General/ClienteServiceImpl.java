@@ -11,11 +11,11 @@ import com.proyecto.angular.demo.Entity.General.ClienteEntity;
 import com.proyecto.angular.demo.Mappers.ClienteMapper;
 import com.proyecto.angular.demo.Repositoryes.ClienteRepository;
 import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
+import static java.util.Objects.isNull;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-    // esto es nuevo 
     @Autowired
     private ClienteRepository clienteRepository;
 
@@ -37,8 +37,8 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ClienteDTO crearCliente(ClienteDTO clienteDTO)  throws ServiceException {
         try {
-            
-       return clienteMapper.toDTO(clienteRepository.save(clienteMapper.toEntity(clienteDTO)));
+           
+            return clienteMapper.toDTO(clienteRepository.save(clienteMapper.toEntity(clienteDTO)));
         } catch (Exception e) {
             throw new ServiceException(e);
         }
@@ -49,7 +49,7 @@ public class ClienteServiceImpl implements ClienteService {
     public List<ClienteDTO>  findLikeObject(ClienteDTO clienteDTO) throws ServiceException
     {
         try {
-            List<ClienteEntity> listaClienteEntity = clienteRepository.findLikeNombre("%" + clienteDTO.getNombre() + "%");
+            List<ClienteEntity> listaClienteEntity = clienteRepository.findLikeNombre("%"+clienteDTO.getNombre()+"%");
          
         
         return listaClienteEntity.stream().map(c -> clienteMapper.toDTO(c)).collect(Collectors.toList()); 
@@ -74,9 +74,40 @@ public class ClienteServiceImpl implements ClienteService {
             throw new ServiceException(e);
         }
 
-       
+              
                                 
     }
+
+    @Override
+    public void BorrarCliente(Integer id) throws ServiceException {
+        try {
+                
+            clienteRepository.deleteById(id);
+
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+        
+    }
+
+    @Override
+    public List<ClienteDTO> findbyIdentificacion(ClienteDTO clienteDTO) throws ServiceException {
+        try {
+            List<ClienteEntity> listaClienteEntity = clienteRepository.findbyIdentificacion(clienteDTO.getId_Identificacion());
+         
+        
+        return listaClienteEntity.stream().map(c -> clienteMapper.toDTO(c)).collect(Collectors.toList()); 
+            
+        } catch (Exception e) {
+
+            throw new ServiceException(e);
+
+        }
+    }
+
+   
+
+    
 
   
 

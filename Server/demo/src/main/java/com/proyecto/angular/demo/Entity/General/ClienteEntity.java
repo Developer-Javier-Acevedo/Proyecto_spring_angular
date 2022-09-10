@@ -7,7 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,8 +30,10 @@ public class ClienteEntity {
     @Column (name = "Id_Cliente")   
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id ; 
+    
     @Column (name = "Id_Identificacion")
     private String  Id_Identificacion;
+  
     @Column (name = "Nombre")
     private String Nombre;
     @Column (name = "email")
