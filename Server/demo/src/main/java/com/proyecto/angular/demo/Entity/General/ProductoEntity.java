@@ -33,8 +33,8 @@ public class ProductoEntity {
     private String Nombre;
     @Column (name = "Precio")
     private Double Precio ; 
-    @Column (name = "Telefono")
-    private Double Telefono;
+    @Column (name = "Stock")
+    private Integer Stock;
     @Column (name = "Estado")
     private String Estado;
   

@@ -3,6 +3,8 @@ package com.proyecto.angular.demo.Controller.General;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -105,4 +107,23 @@ public class ProductoController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @GetMapping("/serial-pagin")
+	public ResponseEntity<?> findByLikeSerialPagin( @RequestParam(value = "page", defaultValue = "1") Integer page,
+													@RequestParam(value = "size", defaultValue = "10") Integer size,
+													@RequestParam(value = "nombre", defaultValue = "") String nombre) {
+		try {
+					
+			Pageable pageable = PageRequest.of(page-1, size);
+			
+			List<ProductoDTO> productoDTO = productoService.findByLikeSerialPagin(pageable,nombre);
+			if (isNull(productoDTO) || productoDTO.isEmpty()) {
+				return ResponseEntity.noContent().build();
+			}
+			return ResponseEntity.ok(productoDTO);
+		} catch (Exception e) {
+			
+			return ResponseEntity.internalServerError().build();
+		}
+	}
 }

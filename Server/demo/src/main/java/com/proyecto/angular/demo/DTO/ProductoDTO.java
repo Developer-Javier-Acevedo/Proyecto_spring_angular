@@ -14,7 +14,7 @@ public class ProductoDTO {
     private Integer Id;
     private String Serial;
     private String Nombre;
+    private Integer Stock;
     private Double Precio ; 
-    private Double Telefono;
     private String Estado;
 }
