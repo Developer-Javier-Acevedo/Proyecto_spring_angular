@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.proyecto.angular.demo.DTO.ClienteDTO;
 import com.proyecto.angular.demo.Entity.General.ClienteEntity;
 import com.proyecto.angular.demo.Mappers.ClienteMapper;
-import com.proyecto.angular.demo.Repositoryes.ClienteRepository;
+import com.proyecto.angular.demo.Repositoryes.General.ClienteRepository;
 import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
 
 @Service
