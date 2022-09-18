@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.angular.demo.Controller.base.GenericController;
 import com.proyecto.angular.demo.DTO.ClienteDTO;
-import com.proyecto.angular.demo.Service.Clientes.General.ClienteService;
+import com.proyecto.angular.demo.Service.General.Service.ClienteService;
+
 import static java.util.Objects.isNull;
 
 import java.util.List;

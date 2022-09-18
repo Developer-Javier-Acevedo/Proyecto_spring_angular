@@ -1,9 +1,8 @@
-package com.proyecto.angular.demo.Service.Clientes.Base;
+package com.proyecto.angular.demo.Service.Base;
 
 import java.util.List;
 
-
-import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
 
 
 public interface GenericService<T>  {

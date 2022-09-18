@@ -2,7 +2,6 @@ package com.proyecto.angular.demo.Entity.procesos;
 
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,16 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-
 import com.proyecto.angular.demo.Entity.General.ClienteEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -31,7 +26,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity(name = "PedidoEntity")
 @Table(name = "tb_pedido")
-@EqualsAndHashCode
+
 public class PedidoEntity {
 
     @Id
@@ -41,10 +36,9 @@ public class PedidoEntity {
 
     @Column(name = "Detalle")
     private String Detalle ;
-   /*
-    @Column(name = "FechaRegistro")
-    
-    private Date FechaRegistro; */
+   
+    @Column(name = "Fecha_Registro")    
+    private Date FechaRegistro; 
 
     @Column(name = "Total")
     private Double Total;
@@ -57,7 +51,7 @@ public class PedidoEntity {
 	@JoinColumn(name = "Id_Cliente", nullable = false)
 	private ClienteEntity cliente;
 
-    /*
+
     @PrePersist
 	private void persistFechaRegistro() {
 		FechaRegistro = new Date();
@@ -66,5 +60,6 @@ public class PedidoEntity {
 	@PreUpdate
 	private void updateFechaRegistro() {
 		FechaRegistro = new Date();
-	} */
+	}
+
 }

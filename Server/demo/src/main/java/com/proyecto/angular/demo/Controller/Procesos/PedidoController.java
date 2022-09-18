@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.angular.demo.DTO.PedidoDTO;
-
-import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
-import com.proyecto.angular.demo.Service.Procesos.Pedidoservice;
+import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.Procesos.Service.Pedidoservice;
 
 @RestController
 @RequestMapping("/pedidos")

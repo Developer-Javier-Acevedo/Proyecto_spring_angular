@@ -1,4 +1,4 @@
-package com.proyecto.angular.demo.Service.Clientes.Exceptions;
+package com.proyecto.angular.demo.Service.Exceptions;
 
 
 public class ServiceException extends Exception{

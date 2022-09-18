@@ -1,7 +1,7 @@
-package com.proyecto.angular.demo.Service.Procesos;
+package com.proyecto.angular.demo.Service.Procesos.Service;
 
 import com.proyecto.angular.demo.DTO.PedidoDTO;
-import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
 
 public interface Pedidoservice {
 

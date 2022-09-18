@@ -1,11 +1,11 @@
-package com.proyecto.angular.demo.Service.Productos;
+package com.proyecto.angular.demo.Service.General.Service;
 
 import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 
 import com.proyecto.angular.demo.DTO.ProductoDTO;
-import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
 
 public interface ProductoService  {
 

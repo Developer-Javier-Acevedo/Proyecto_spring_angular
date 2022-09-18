@@ -1,4 +1,4 @@
-package com.proyecto.angular.demo.Service.Productos;
+package com.proyecto.angular.demo.Service.General.Impl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +11,8 @@ import com.proyecto.angular.demo.DTO.ProductoDTO;
 import com.proyecto.angular.demo.Entity.General.ProductoEntity;
 import com.proyecto.angular.demo.Mappers.ProductoMapper;
 import com.proyecto.angular.demo.Repositoryes.ProductoRepository;
-import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.General.Service.ProductoService;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

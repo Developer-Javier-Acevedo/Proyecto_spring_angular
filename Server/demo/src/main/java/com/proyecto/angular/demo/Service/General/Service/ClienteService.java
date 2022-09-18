@@ -1,7 +1,7 @@
-package com.proyecto.angular.demo.Service.Clientes.General;
+package com.proyecto.angular.demo.Service.General.Service;
 
 import com.proyecto.angular.demo.DTO.ClienteDTO;
-import com.proyecto.angular.demo.Service.Clientes.Base.GenericService;
+import com.proyecto.angular.demo.Service.Base.GenericService;
 
 
 

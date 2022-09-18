@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.angular.demo.DTO.ProductoDTO;
-import com.proyecto.angular.demo.Service.Productos.ProductoService;
+import com.proyecto.angular.demo.Service.General.Service.ProductoService;
+
 import static java.util.Objects.isNull;
 
 @RestController

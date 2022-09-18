@@ -1,4 +1,4 @@
-package com.proyecto.angular.demo.Service.Clientes.General;
+package com.proyecto.angular.demo.Service.General.Impl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +10,8 @@ import com.proyecto.angular.demo.DTO.ClienteDTO;
 import com.proyecto.angular.demo.Entity.General.ClienteEntity;
 import com.proyecto.angular.demo.Mappers.ClienteMapper;
 import com.proyecto.angular.demo.Repositoryes.ClienteRepository;
-import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
+import com.proyecto.angular.demo.Service.General.Service.ClienteService;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {

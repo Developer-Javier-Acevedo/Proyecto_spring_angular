@@ -21,7 +21,7 @@ public class PedidoDTO {
     
     private Integer Id ;     
     private String Detalle ;  
-    /*private Date FechaRegistro;*/
+    private Date FechaRegistro;
     private Double Total;  
     private Integer Estado ;  
 	private ClienteEntity cliente;
