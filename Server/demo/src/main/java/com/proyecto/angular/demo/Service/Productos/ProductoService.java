@@ -2,6 +2,8 @@ package com.proyecto.angular.demo.Service.Productos;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+
 import com.proyecto.angular.demo.DTO.ProductoDTO;
 import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
 
@@ -16,4 +18,6 @@ public interface ProductoService  {
     List<ProductoDTO> traerTodos() throws ServiceException;
 
     List<ProductoDTO> findbySerial( ProductoDTO productoDTO ) throws ServiceException;
+
+    List<ProductoDTO> findByLikeSerialPagin(Pageable pageable, String nombre)throws ServiceException;
 }

@@ -1,6 +1,8 @@
 package com.proyecto.angular.demo.Repositoryes;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,6 +16,9 @@ public interface ProductoRepository extends JpaRepository <ProductoEntity, Integ
 
     @Query(value = "SELECT * FROM tb_producto where Serial LIKE :Serial", nativeQuery = true) //SQL
     List<ProductoEntity> findLikeSerial(@Param("Serial") String Serial);
+
+    @Query(value = "SELECT * FROM tb_producto WHERE upper (Nombre) LIKE upper (:nombre) AND Estado = 1", nativeQuery = true)     
+	Page<ProductoEntity> findByLikeSerialPagin(Pageable pageable, @Param("nombre") String nombre);
 
     
 }

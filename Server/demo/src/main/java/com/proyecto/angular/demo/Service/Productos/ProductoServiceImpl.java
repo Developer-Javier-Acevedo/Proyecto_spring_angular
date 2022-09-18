@@ -13,6 +13,10 @@ import com.proyecto.angular.demo.Mappers.ProductoMapper;
 import com.proyecto.angular.demo.Repositoryes.ProductoRepository;
 import com.proyecto.angular.demo.Service.Clientes.Exceptions.ServiceException;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
@@ -83,7 +87,15 @@ public class ProductoServiceImpl implements ProductoService {
         }
     }
 
-
+    @Override
+    public List<ProductoDTO> findByLikeSerialPagin(Pageable pageable, String nombre) throws ServiceException {
+        
+        Page<ProductoEntity> lstProductoEntities = productoRepository.findByLikeSerialPagin(pageable, "%" + nombre + "%");
+		
+		List<ProductoDTO> lstProductoDTOs= lstProductoEntities.getContent().stream().map(c -> productoMapper.toDTO(c)).collect(Collectors.toList());
+		
+		return lstProductoDTOs;
+	}
 
     
     
