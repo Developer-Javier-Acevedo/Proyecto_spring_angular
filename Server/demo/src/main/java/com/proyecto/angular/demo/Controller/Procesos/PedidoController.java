@@ -25,7 +25,7 @@ public class PedidoController {
         try {
             
             PedidoDTO pedidoDTO = pedidoService.findById(id);
-            return ResponseEntity.ok(pedidoDTO);
+            return ResponseEntity.ok(pedidoDTO); 
 
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();

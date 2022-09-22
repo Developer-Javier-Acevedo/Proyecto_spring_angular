@@ -6,4 +6,6 @@ import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
 public interface Pedidoservice {
 
     PedidoDTO findById(Integer id) throws ServiceException;
+
+    PedidoDTO save(PedidoDTO pedidoDTO) throws ServiceException;
 }

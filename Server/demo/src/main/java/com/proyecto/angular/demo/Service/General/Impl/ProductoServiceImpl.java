@@ -10,17 +10,15 @@ import com.proyecto.angular.demo.DTO.ProductoDTO;
 
 import com.proyecto.angular.demo.Entity.General.ProductoEntity;
 import com.proyecto.angular.demo.Mappers.ProductoMapper;
-import com.proyecto.angular.demo.Repositoryes.ProductoRepository;
+import com.proyecto.angular.demo.Repositoryes.General.ProductoRepository;
 import com.proyecto.angular.demo.Service.Exceptions.ServiceException;
 import com.proyecto.angular.demo.Service.General.Service.ProductoService;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-
 @Service
 public class ProductoServiceImpl implements ProductoService {
-
 
     @Autowired
     private ProductoMapper productoMapper;
@@ -28,15 +26,11 @@ public class ProductoServiceImpl implements ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
-
-    
     @Override
-	public ProductoDTO findById(Integer Id) {
+    public ProductoDTO findById(Integer Id) {
         ProductoEntity productoEntity = productoRepository.findById(Id).orElse(null);
-		return productoMapper.toDTO(productoEntity);
-	}
-
-
+        return productoMapper.toDTO(productoEntity);
+    }
 
     @Override
     public ProductoDTO CrearProducto(ProductoDTO productoDTO) throws ServiceException {
@@ -46,13 +40,13 @@ public class ProductoServiceImpl implements ProductoService {
         } catch (Exception e) {
             throw new ServiceException(e);
         }
-       
+
     }
 
     @Override
-    public void Delete(Integer id) throws ServiceException{
+    public void Delete(Integer id) throws ServiceException {
         try {
-            
+
             productoRepository.deleteById(id);
 
         } catch (Exception e) {
@@ -61,27 +55,25 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public List<ProductoDTO> traerTodos()throws ServiceException{
+    public List<ProductoDTO> traerTodos() throws ServiceException {
         try {
             List<ProductoEntity> listaProductoEntity = productoRepository.findAll();
 
-            return listaProductoEntity.stream().map(c -> productoMapper.toDTO(c)).collect(Collectors.toList());   
+            return listaProductoEntity.stream().map(c -> productoMapper.toDTO(c)).collect(Collectors.toList());
         } catch (Exception e) {
 
             throw new ServiceException(e);
         }
     }
 
-
-
     @Override
     public List<ProductoDTO> findbySerial(ProductoDTO productoDTO) throws ServiceException {
         try {
-            
-            List<ProductoEntity> listaproductos = productoRepository.findLikeSerial("%"+productoDTO.getSerial()+"%");
 
-            return listaproductos.stream().map(c -> productoMapper.toDTO(c)).collect(Collectors.toList());   
+            List<ProductoEntity> listaproductos = productoRepository
+                    .findLikeSerial("%" + productoDTO.getSerial() + "%");
 
+            return listaproductos.stream().map(c -> productoMapper.toDTO(c)).collect(Collectors.toList());
 
         } catch (Exception e) {
             throw new ServiceException(e);
@@ -90,14 +82,14 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     public List<ProductoDTO> findByLikeSerialPagin(Pageable pageable, String nombre) throws ServiceException {
-        
-        Page<ProductoEntity> lstProductoEntities = productoRepository.findByLikeSerialPagin(pageable, "%" + nombre + "%");
-		
-		List<ProductoDTO> lstProductoDTOs= lstProductoEntities.getContent().stream().map(c -> productoMapper.toDTO(c)).collect(Collectors.toList());
-		
-		return lstProductoDTOs;
-	}
 
-    
-    
+        Page<ProductoEntity> lstProductoEntities = productoRepository.findByLikeSerialPagin(pageable,
+                "%" + nombre + "%");
+
+        List<ProductoDTO> lstProductoDTOs = lstProductoEntities.getContent().stream().map(c -> productoMapper.toDTO(c))
+                .collect(Collectors.toList());
+
+        return lstProductoDTOs;
+    }
+
 }
