@@ -2,12 +2,12 @@ package com.proyecto.angular.demo.Entity.procesos;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -28,8 +28,6 @@ import lombok.NoArgsConstructor;
 public class PedidoEntity {
 
     @Id
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_Pedido")
     private Integer Id;
 
@@ -46,19 +44,25 @@ public class PedidoEntity {
     private String Estado;
 
     @ManyToOne
-    @Column(name = "Id_Cliente")
+    @JoinColumn(name = "Id_Cliente", nullable = false)
     private ClienteEntity cliente;
 
-    @OneToMany
-    @Column(name = "pedido")
-    private List<PedidoDetalleEntity> detalle;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<PedidoDetalleEntity> PedidoDetallado;
+
+    @Override
+    public String toString() {
+        return "PedidoEntity [id=" + Id + ", Detalles=" + Detalles + ", FechaRegistro=" + FechaRegistro + ", Total="
+                + Total
+                + ", Estado=" + Estado + ", cliente=" + cliente + ", PedidoDetallado=" + PedidoDetallado + "]";
+    }
 
     public void calcularSubTotal() {
 
         Double tmpTotal = 0.0;
 
-        for (PedidoDetalleEntity pedidoDetalle : detalle) {
-            if (isNull(detalle) || Detalles.isEmpty() || isNull(pedidoDetalle)) {
+        for (PedidoDetalleEntity pedidoDetalle : PedidoDetallado) {
+            if (isNull(PedidoDetallado) || Detalles.isEmpty() || isNull(pedidoDetalle)) {
                 setTotal(0.0);
             }
 
@@ -121,8 +125,12 @@ public class PedidoEntity {
         this.cliente = cliente;
     }
 
-    public void setDetalle(List<PedidoDetalleEntity> detalle) {
-        this.detalle = detalle;
+    public void setPedidoDetallado(List<PedidoDetalleEntity> PedidoDetallado) {
+        this.PedidoDetallado = PedidoDetallado;
+    }
+
+    public List<PedidoDetalleEntity> getPedidoDetallado() {
+        return PedidoDetallado;
     }
 
 }

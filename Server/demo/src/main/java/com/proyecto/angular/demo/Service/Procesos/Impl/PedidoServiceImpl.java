@@ -61,7 +61,7 @@ public class PedidoServiceImpl implements Pedidoservice {
             List<PedidoDetalleEntity> listPedidoDetalleEntity = new ArrayList<>();
 
             // Detalle Pedido
-            pedidoDTO.getDetalle().forEach(dp -> {
+            pedidoDTO.getPedidoDetallado().forEach(dp -> {
 
                 // Buscando el producto
 
@@ -87,7 +87,7 @@ public class PedidoServiceImpl implements Pedidoservice {
 
             });
 
-            pedidoEntity.setDetalle(listPedidoDetalleEntity);
+            pedidoEntity.setPedidoDetallado(listPedidoDetalleEntity);
 
             pedidoEntity.calcularSubTotal();
 
