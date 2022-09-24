@@ -15,10 +15,11 @@ import lombok.NoArgsConstructor;
 public class PedidoDTO {
 
     private Integer Id;
-    private String Detalles;
-    private Date FechaRegistro;
-    private Double Total;
-    private String Estado;
+    private String detalles;
+    private Date fechaRegistro;
+    private Double total;
+    private String estado;
     private ClienteDTO cliente;
     private List<PedidoDetalleDTO> PedidoDetallado;
+
 }

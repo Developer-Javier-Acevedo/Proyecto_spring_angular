@@ -15,7 +15,6 @@ public class PedidoDetalleDTO {
 
     private Integer Id;
     private Integer Cantidad;
-    private String FechaRegistro;
     private Double Precio;
     private Double Subtotal;
     private ProductoDTO Productos;

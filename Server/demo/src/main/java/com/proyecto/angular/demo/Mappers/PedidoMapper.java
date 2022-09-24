@@ -24,16 +24,24 @@ public class PedidoMapper {
 	public PedidoDTO toDTO(PedidoEntity pedidoEntity) {
 
 		PedidoDTO pedidoDTO = new PedidoDTO();
-		BeanUtils.copyProperties(pedidoEntity, pedidoDTO);
 
+		// datos del cliente
+		pedidoDTO.setCliente(clienteMapper.toDTO(pedidoEntity.getCliente()));
+
+		// datos del detalle del pedido
 		pedidoDTO.setPedidoDetallado(new ArrayList<>());
 
 		pedidoEntity.getPedidoDetallado().forEach(pd -> {
 			PedidoDetalleDTO pedidoDetalleDTO = pedidoDetalleMapper.toDTO(pd);
+
 			pedidoDetalleDTO.setProductos(productoMapper.toDTO(pd.getProducto()));
+
 			pedidoDTO.getPedidoDetallado().add(pedidoDetalleDTO);
 
-		});
+		}
+
+		);
+		BeanUtils.copyProperties(pedidoEntity, pedidoDTO);
 		return pedidoDTO;
 	}
 

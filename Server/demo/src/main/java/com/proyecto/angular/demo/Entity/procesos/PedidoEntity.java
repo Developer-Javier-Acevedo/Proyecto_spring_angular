@@ -31,30 +31,29 @@ public class PedidoEntity {
     @Column(name = "Id_Pedido")
     private Integer Id;
 
-    @Column(name = "Detalle")
-    private String Detalles;
-
-    @Column(name = "Fecha_Registro")
-    private Date FechaRegistro;
-
-    @Column(name = "Total")
-    private Double Total;
-
-    @Column(name = "Estado")
-    private String Estado;
-
     @ManyToOne
     @JoinColumn(name = "Id_Cliente", nullable = false)
     private ClienteEntity cliente;
+
+    @Column(name = "Detalle")
+    private String detalles;
+
+    @Column(name = "Fecha_Registro")
+    private Date fechaRegistro;
+
+    @Column(name = "Total")
+    private Double total;
+
+    @Column(name = "Estado")
+    private String estado;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<PedidoDetalleEntity> PedidoDetallado;
 
     @Override
     public String toString() {
-        return "PedidoEntity [id=" + Id + ", Detalles=" + Detalles + ", FechaRegistro=" + FechaRegistro + ", Total="
-                + Total
-                + ", Estado=" + Estado + ", cliente=" + cliente + ", PedidoDetallado=" + PedidoDetallado + "]";
+        return "PedidoEntity [id=" + Id + ", Detalles=" + detalles + ", FechaRegistro=" + fechaRegistro + ", Total="
+                + total + ", Estado=" + estado + ", cliente=" + cliente + ", PedidoDetallado=" + PedidoDetallado + "]";
     }
 
     public void calcularSubTotal() {
@@ -62,7 +61,7 @@ public class PedidoEntity {
         Double tmpTotal = 0.0;
 
         for (PedidoDetalleEntity pedidoDetalle : PedidoDetallado) {
-            if (isNull(PedidoDetallado) || Detalles.isEmpty() || isNull(pedidoDetalle)) {
+            if (isNull(PedidoDetallado) || detalles.isEmpty() || isNull(pedidoDetalle)) {
                 setTotal(0.0);
             }
 
@@ -73,12 +72,12 @@ public class PedidoEntity {
 
     @PrePersist
     private void persistFechaRegistro() {
-        FechaRegistro = new Date();
+        fechaRegistro = new Date();
     }
 
     @PreUpdate
     private void updateFechaRegistro() {
-        FechaRegistro = new Date();
+        fechaRegistro = new Date();
     }
 
     public Integer getId() {
@@ -89,32 +88,36 @@ public class PedidoEntity {
         this.Id = Id;
     }
 
-    public void setDetalles(String Detalles) {
-        this.Detalles = Detalles;
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
+
+    public void getDetalles(String detalles) {
+        this.detalles = detalles;
     }
 
     public Date getFechaRegistro() {
-        return this.FechaRegistro;
+        return this.fechaRegistro;
     }
 
-    public void setFechaRegistro(Date FechaRegistro) {
-        this.FechaRegistro = FechaRegistro;
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
-    public Double getTotal() {
-        return this.Total;
+    public Double gettotal() {
+        return this.total;
     }
 
     public void setTotal(Double Total) {
-        this.Total = Total;
+        this.total = Total;
     }
 
     public String getEstado() {
-        return this.Estado;
+        return this.estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public ClienteEntity getCliente() {

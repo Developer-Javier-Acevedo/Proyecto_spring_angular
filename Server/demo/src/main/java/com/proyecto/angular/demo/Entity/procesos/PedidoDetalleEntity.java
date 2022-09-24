@@ -14,11 +14,10 @@ import com.proyecto.angular.demo.Entity.General.ProductoEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+
 import lombok.NoArgsConstructor;
 import static java.util.Objects.isNull;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
