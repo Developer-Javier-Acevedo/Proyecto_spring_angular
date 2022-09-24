@@ -8,16 +8,16 @@ import com.proyecto.angular.demo.Entity.General.ClienteEntity;
 
 @Component
 public class ClienteMapper {
-    
-    public ClienteDTO toDTO(ClienteEntity clienteEntity) {
+
+	public ClienteDTO toDTO(ClienteEntity clienteEntity) {
 		ClienteDTO clienteDTO = new ClienteDTO();
-		BeanUtils.copyProperties(clienteEntity,clienteDTO );
+		BeanUtils.copyProperties(clienteEntity, clienteDTO);
 		return clienteDTO;
 	}
-	
+
 	public ClienteEntity toEntity(ClienteDTO clienteDTO) {
-		ClienteEntity clienteEntity= new ClienteEntity();
-		BeanUtils.copyProperties(clienteDTO,clienteEntity);
+		ClienteEntity clienteEntity = new ClienteEntity();
+		BeanUtils.copyProperties(clienteDTO, clienteEntity);
 		return clienteEntity;
 	}
 

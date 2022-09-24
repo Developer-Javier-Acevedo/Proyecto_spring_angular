@@ -1,8 +1,7 @@
 package com.proyecto.angular.demo.DTO;
 
 import java.sql.Date;
-import com.proyecto.angular.demo.Entity.General.ClienteEntity;
-
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,10 +14,11 @@ import lombok.NoArgsConstructor;
 public class PedidoDTO {
 
     private Integer Id;
-    private String Detalle;
-    private Date FechaRegistro;
-    private Double Total;
-    private Integer Estado;
-    private ClienteEntity cliente;
+    private String detalles;
+    private Date fechaRegistro;
+    private Double total;
+    private String estado;
+    private ClienteDTO cliente;
+    private List<PedidoDetalleDTO> PedidoDetallado;
 
 }
