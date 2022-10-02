@@ -23,42 +23,40 @@ import com.proyecto.angular.demo.Service.General.Service.ProductoService;
 import static java.util.Objects.isNull;
 
 @RestController
-@RequestMapping("/Productos")
+@RequestMapping("/V1/Productos")
 public class ProductoController {
-
 
     @Autowired
     private ProductoService productoService;
 
-
     @GetMapping("/{id}")
-	public ResponseEntity<?> findById(@PathVariable Integer id) {
+    public ResponseEntity<?> findById(@PathVariable Integer id) {
 
         try {
-            ProductoDTO productoDTO =productoService.findById(id);
+            ProductoDTO productoDTO = productoService.findById(id);
 
-            if (isNull(productoDTO) ) {
-				return ResponseEntity.noContent().build();
-			}
+            if (isNull(productoDTO)) {
+                return ResponseEntity.noContent().build();
+            }
 
             return ResponseEntity.ok(productoDTO);
         } catch (Exception e) {
 
             return ResponseEntity.internalServerError().build();
 
-        }	
-        
-	}
+        }
+
+    }
 
     @GetMapping("/All")
-    public ResponseEntity<?> traerTodos(){
+    public ResponseEntity<?> traerTodos() {
         try {
             List<ProductoDTO> productoDTO = productoService.traerTodos();
 
             if (isNull(productoDTO) || productoDTO.isEmpty()) {
-				return ResponseEntity.noContent().build();
-			}
-            
+                return ResponseEntity.noContent().build();
+            }
+
             return ResponseEntity.ok(productoDTO);
         } catch (Exception e) {
 
@@ -67,9 +65,9 @@ public class ProductoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> CrearProducto(@RequestBody @Validated ProductoDTO producto, BindingResult result){
+    public ResponseEntity<?> CrearProducto(@RequestBody @Validated ProductoDTO producto, BindingResult result) {
         try {
-            
+
             ProductoDTO productoDTO = productoService.CrearProducto(producto);
 
             return ResponseEntity.ok(productoDTO);
@@ -79,29 +77,29 @@ public class ProductoController {
         }
     }
 
-    @DeleteMapping ("/borrarProducto/{id}")
-    public ResponseEntity<?> borrar(@PathVariable Integer id ){
+    @DeleteMapping("/borrarProducto/{id}")
+    public ResponseEntity<?> borrar(@PathVariable Integer id) {
 
         try {
-            
+
             productoService.Delete(id);
 
             return ResponseEntity.ok().build();
 
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
-        }        
-        
+        }
+
     }
 
     @GetMapping("/BuscarPorSerial")
-    public ResponseEntity<?> TraerPorSerial (@RequestParam(value ="Serial",defaultValue = "" ) String Serial){
+    public ResponseEntity<?> TraerPorSerial(@RequestParam(value = "Serial", defaultValue = "") String Serial) {
         try {
-            
+
             List<ProductoDTO> productoDTO = productoService.findbySerial(ProductoDTO.builder().Serial(Serial).build());
             if (isNull(productoDTO) || productoDTO.isEmpty()) {
-				return ResponseEntity.noContent().build();
-			}
+                return ResponseEntity.noContent().build();
+            }
             return ResponseEntity.ok(productoDTO);
 
         } catch (Exception e) {
@@ -110,21 +108,21 @@ public class ProductoController {
     }
 
     @GetMapping("/serial-pagin")
-	public ResponseEntity<?> findByLikeSerialPagin( @RequestParam(value = "page", defaultValue = "1") Integer page,
-													@RequestParam(value = "size", defaultValue = "10") Integer size,
-													@RequestParam(value = "nombre", defaultValue = "") String nombre) {
-		try {
-					
-			Pageable pageable = PageRequest.of(page-1, size);
-			
-			List<ProductoDTO> productoDTO = productoService.findByLikeSerialPagin(pageable,nombre);
-			if (isNull(productoDTO) || productoDTO.isEmpty()) {
-				return ResponseEntity.noContent().build();
-			}
-			return ResponseEntity.ok(productoDTO);
-		} catch (Exception e) {
-			
-			return ResponseEntity.internalServerError().build();
-		}
-	}
+    public ResponseEntity<?> findByLikeSerialPagin(@RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "10") Integer size,
+            @RequestParam(value = "nombre", defaultValue = "") String nombre) {
+        try {
+
+            Pageable pageable = PageRequest.of(page - 1, size);
+
+            List<ProductoDTO> productoDTO = productoService.findByLikeSerialPagin(pageable, nombre);
+            if (isNull(productoDTO) || productoDTO.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(productoDTO);
+        } catch (Exception e) {
+
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
